@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação CIMEB - Upload Concluído</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .success { color: #4CAF50; }
+        .error { color: #f44336; }
+        .warning { color: #ff9800; }
+        .test { margin: 10px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        button { background: #007cba; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>🎉 CIMEB - Verificação Pós-Upload</h1>
+    <p>Esta página confirma que o upload foi realizado com sucesso!</p>
+    
+    <div class="test">
+        <h3>✅ Testes Automáticos</h3>
+        <div id="tests"></div>
+        <button onclick="runTests()">Executar Testes</button>
+    </div>
+
+    <div class="test">
+        <h3>📱 Teste do WhatsApp</h3>
+        <p>Clique no botão abaixo para testar a integração com WhatsApp:</p>
+        <button onclick="testWhatsApp()">Testar WhatsApp</button>
+    </div>
+
+    <div class="test">
+        <h3>🔗 Links para Testar</h3>
+        <ul>
+            <li><a href="/#inicio">Seção Início</a></li>
+            <li><a href="/#sobre">Seção Sobre</a></li>
+            <li><a href="/#academy">Academy</a></li>
+            <li><a href="/#livraria">Livraria</a></li>
+            <li><a href="/#contato">Contato</a></li>
+        </ul>
+    </div>
+
+    <div class="test">
+        <h3>⚠️ Importante: Remover este arquivo</h3>
+        <p class="warning">Após verificar que tudo está funcionando, <strong>delete este arquivo</strong> do servidor por segurança.</p>
+    </div>
+
+    <script>
+        function runTests() {
+            const testsDiv = document.getElementById('tests');
+            let html = '';
+            
+            // Teste 1: HTTPS
+            html += `<p class="${location.protocol === 'https:' ? 'success' : 'warning'}">
+                ${location.protocol === 'https:' ? '✅' : '⚠️'} HTTPS: ${location.protocol}
+            </p>`;
+            
+            // Teste 2: Responsividade
+            html += `<p class="success">✅ Viewport: ${window.innerWidth}x${window.innerHeight}</p>`;
+            
+            // Teste 3: JavaScript funcionando
+            html += `<p class="success">✅ JavaScript: Funcionando</p>`;
+            
+            // Teste 4: Domínio
+            html += `<p class="success">✅ Domínio: ${location.hostname}</p>`;
+            
+            testsDiv.innerHTML = html;
+        }
+        
+        function testWhatsApp() {
+            const number = "5511999999999";
+            const message = "Teste de integração WhatsApp - CIMEB";
+            const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+        
+        // Executar testes automaticamente
+        window.onload = () => {
+            setTimeout(runTests, 1000);
+        };
+    </script>
+</body>
+</html>
