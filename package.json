@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "scripts": {
+  "name": {
     "dev": "vite",
     "build": "vite build",
     "build:dev": "vite build --mode development",
